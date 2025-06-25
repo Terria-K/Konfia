@@ -14,7 +14,9 @@ pub fn main() !void {
 
     _ = argsIterator.skip();
 
+	var argsProvided = false;
     while (argsIterator.next()) |n| {
+    	argsProvided = true;
         if (std.mem.eql(u8, n, "--export")) {
             const name = argsIterator.next(); // name
 
@@ -35,6 +37,24 @@ pub fn main() !void {
                 std.log.err("Please input a file path after '--import'.", .{});
             }
         }
+        else if (std.mem.eql(u8, n, "--help")) {
+            std.debug.print(
+                    \\Usage: konfia [options]
+                    \\
+                    \\Options:
+                    \\  --export <name>   Export the configuration to <name>
+                    \\  --import <path>   Import the configuration from <path>
+                    \\  --help            Show this help message
+                    \\
+                    , .{}
+                );   
+        }
+        else {
+        	std.log.err("Unknown parameter.\nTry 'konfia --help' for more information.", .{});
+        }
+    }
+    if (!argsProvided) {
+    	std.log.err("konfia: missing parameter\nTry 'konfia --help' for more information.\n", .{});
     }
 }
 
@@ -137,7 +157,7 @@ fn import(allocator: *std.mem.Allocator, filepath: []const u8) !void {
         }
     }
 
-    std.log.info("Finished!", .{});
+    std.log.info("Finished!\nMake sure to restart or relogin to see changes.", .{});
 }
 
 fn export_config(allocator: *std.mem.Allocator, filename: []const u8) !void {
