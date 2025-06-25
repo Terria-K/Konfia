@@ -19,7 +19,7 @@ $ konfia --import "<path/to/tar.gz>"
 
 ## For exporting your configs and themes.
 ```bash
-$ konfia --export
+$ konfia --export "<name>"
 ```
 This will directly look up the necessary files and directories to save. To see which files are being saved, look at:
 [constants.zig](/src/constants.zig)
