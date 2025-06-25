@@ -50,11 +50,11 @@ pub fn main() !void {
                 );   
         }
         else {
-        	std.log.err("Unknown parameter.\nTry 'konfia --help' for more information.", .{});
+        	std.log.err("unknown parameter\nTry 'konfia --help' for more information.", .{});
         }
     }
     if (!argsProvided) {
-    	std.log.err("konfia: missing parameter\nTry 'konfia --help' for more information.\n", .{});
+    	std.log.err("missing parameter\nTry 'konfia --help' for more information.\n", .{});
     }
 }
 
