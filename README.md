@@ -16,6 +16,7 @@ on another machine and it will extract all files in the proper directories.
 ```bash
 $ konfia --import "<path/to/tar.gz>"
 ```
+Make sure to restart or relogin after importing.
 
 ## For exporting your configs and themes.
 ```bash
